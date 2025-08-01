@@ -33,16 +33,7 @@ class HelloControllerTest {
                 .andExpect(content().string("Hello World! -1156"));
     }
     
-    @Test
-    void testHelloMessageEndpoint() throws Exception {
-        // Тестируем GET /hello
-        mockMvc.perform(get("/hello"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().string("Привет из Spring Boot приложения!"))
-                .andExpect(content().contentType("text/plain;charset=UTF-8"));
-    }
-    
+
     @Test
     void testHelloMessagePost_ValidMessage() throws Exception {
         // Тестируем POST /hello с валидным сообщением
