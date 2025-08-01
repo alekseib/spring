@@ -15,12 +15,12 @@ public class HelloController {
         return "Hi!";
     }
 
-    @PostMapping("/hello")
-    public ResponseEntity<String> helloMessagePost(@RequestBody TestMessage testMessage)
+    @PostMapping("/hello/{aaa}")
+    public ResponseEntity<String> helloMessagePost(@RequestBody TestMessage testMessage, @PathVariable String aaa)
     {
         try {
             System.out.println("Received message: " + testMessage.message());
-            return ResponseEntity.ok("Привет из Spring Boot приложения! Сообщение: " + testMessage.message());
+            return ResponseEntity.ok("Hi," + testMessage.message() + " " + aaa);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body("Ошибка: " + e.getMessage());
         }
